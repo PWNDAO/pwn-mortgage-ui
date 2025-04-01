@@ -33,7 +33,7 @@ const { openModal } = useModalTweet()
 const now = new Date()
 const deadline = now.getTime() + (11 * 58 * 59 * 1000)
 const countdownText = ref('')
-let timer = null
+let timer: ReturnType<typeof setInterval> | null = null
 
 const updateCountdown = () => {
     const now = new Date().getTime()

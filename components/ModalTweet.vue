@@ -7,12 +7,12 @@
                         While our AI agent might not be signing mortgage papers just yet, who’s to say this isn’t the future? Keep that dream alive (and brainstorm your own wild ideas) over on our Discord or check and make some juicy loans on PWN.
                     </p> 
                     <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;">
-                        <button style="width: 40%;" class="modal-tweet__post-button" @click="() => window.open('https://pwn.xyz', '_blank')">
+                        <NuxtLink to="https://pwn.xyz" target="_blank" style="width: 40%;" class="modal-tweet__post-button">
                             Check out real loans
-                        </button>
-                        <button style="width: 40%;" class="modal-tweet__post-button" @click="() => window.open('https://discord.pwn.xyz', '_blank')">
+                        </NuxtLink>
+                        <NuxtLink to="https://discord.pwn.xyz" target="_blank" style="width: 40%;" class="modal-tweet__post-button">
                             Join PWN Discord
-                        </button>
+                        </NuxtLink>
                     </div>
                     <p style="margin-top: 2rem; line-height: 1.35; font-size: 1.25rem; font-family: var(--font-family-screener);">
                         Let’s build a world where even robots can own their slice of the cloud!
