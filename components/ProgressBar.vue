@@ -2,40 +2,43 @@
     <div class="progress-bar">
         <div class="progress-bar__fill" :style="{ width: `${progress}%` }"/>
         <div class="progress-bar__text" :class="{ 'highlight': isHighlighting }">
-            {{ currentValue.toLocaleString() }} / {{ maxValue.toLocaleString() }} USDC
+            {{ formattedCurrentValue }} / {{ formattedMaxValue }} USDC
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { useSupporters } from '~/composables/useSupporters'
+
 const maxValue = 150000
-const currentValue = ref(91420)
-const progress = computed(() => (currentValue.value / maxValue) * 100)
+const { totalAmount } = useSupporters()
 
+// Format values with commas
+const formattedCurrentValue = computed(() => 
+    Math.floor(totalAmount.value).toLocaleString()
+)
+const formattedMaxValue = computed(() => 
+    maxValue.toLocaleString()
+)
+
+// Calculate progress percentage
+const progress = computed(() => 
+    Math.min((totalAmount.value / maxValue) * 100, 100)
+)
+
+// Animation for value changes
 const isHighlighting = ref(false)
+const previousTotal = ref(totalAmount.value)
 
-const updateProgress = () => {
-    // Generate random increment between 1 and 2000
-    const increment = Math.floor(Math.random() * 1500) + 1
-    
-    // Only update if we won't exceed maxValue
-    if (currentValue.value + increment < maxValue) {
-        currentValue.value += increment
-        // Trigger highlight animation
+// Watch for changes in the total to trigger highlighting
+watch(totalAmount, (newValue) => {
+    if (newValue > previousTotal.value) {
         isHighlighting.value = true
         setTimeout(() => {
             isHighlighting.value = false
         }, 300) // Animation duration
     }
-    
-    // Schedule next update with random delay (1-5 seconds)
-    const nextDelay = Math.floor(Math.random() * 4000) + 1000
-    setTimeout(updateProgress, nextDelay)
-}
-
-// Start the updates
-onMounted(() => {
-    updateProgress()
+    previousTotal.value = newValue
 })
 </script>
 
@@ -53,6 +56,7 @@ onMounted(() => {
         height: 100%;
         background: linear-gradient(to right, #111111, var(--primary-color-2));
         z-index: -1;
+        transition: width 0.3s ease-out;
     }
 
     &__text {

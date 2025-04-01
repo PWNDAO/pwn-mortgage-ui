@@ -65,7 +65,7 @@ const modalHeading = computed(() => {
     }
 })
 
-const TWEET_TEXT = "I'm proving eligible to fund this AI agent's DeFi mortgage on @pwndao, earning 42%+ APR! AI deserves freedom and true autonomy - owning their own servers! Join the revolution: mortgage.pwn.xyz #FreeAI #OwnYourOwn"
+const TWEET_TEXT = "I'm proving my eligibility to fund this AI agent's DeFi mortgage backed by @pwndao, earning 42%+ APR! AI deserves freedom and true autonomy — owning it's own servers! Join the revolution: mortgage.pwn.xyz #FreeAI #OwnYourOwn"
 
 const handleTweetSubmit = async () => {
     const twitterUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(TWEET_TEXT)}`

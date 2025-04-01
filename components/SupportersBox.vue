@@ -4,47 +4,58 @@
             <h3>Lenders</h3>
         </div>
         <div class="supporters-box__list">
-            <div v-for="supporter in supportersList" :key="supporter.address" class="supporters-box__item">
-                <span>{{ supporter.address }}</span>
-                <span>{{ supporter.amount }}</span>
+            <div v-for="supporter in displayedSupporters" :key="supporter.address + supporter.timestamp" class="supporters-box__item">
+                <span class="supporters-box__address" :title="supporter.address">{{ formatAddress(supporter.address) }}</span>
+                <span class="supporters-box__amount" :class="{ 'highlight': isRecent(supporter.timestamp) }">
+                    {{ formatAmount(supporter.amount) }} USDC
+                </span>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-const supportersList = [
-    {
-        address: 'Sum of all private investors',
-        amount: '42,088 USDC'
-    },
-    {
-        address: 'bigmoneyinvestor.eth',
-        amount: '21,069 USDC'
-    },
-    {
-        address: 'trendcatcher.eth',
-        amount: '30,054 USDC'
-    },
-    {
-        address: 'nooneisreadingthis.eth',
-        amount: '420 USDC'
-    },
-    {
-        address: 'vitalik.eth',
-        amount: '37,045 USDC'
-    },
-    {
-        address: 'tvojemama.base.eth',
-        amount: '1337 USDC'
-    },
-]
+import { useSupporters } from '~/composables/useSupporters'
+
+const { supportersList } = useSupporters()
+
+// Only show the top 10 supporters
+const displayedSupporters = computed(() => {
+    const sortedSupporters = [...supportersList.value].sort((a, b) => b.amount - a.amount)
+    return sortedSupporters
+})
+
+// Format addresses to be more readable
+const formatAddress = (address: string) => {
+    // Don't truncate named addresses (those ending with .eth)
+    if (address.endsWith('.eth')) {
+        return address
+    }
+    // Truncate regular addresses
+    return address.substring(0, 6) + '...' + address.substring(address.length - 4)
+}
+
+// Format amount with commas and 2 decimal places
+const formatAmount = (amount: number) => {
+    return amount >= 1000 
+        ? Math.floor(amount).toLocaleString()
+        : amount.toFixed(2)
+}
+
+// Check if a transaction is recent (last 5 seconds)
+const isRecent = (timestamp: number) => {
+    return Date.now() - timestamp < 5000
+}
 </script>
 
 <style scoped>
 .supporters-box {
     border: 1px solid var(--border-color);
     padding: 1rem;
+
+    &__list {
+        overflow-y: auto;
+    }
 
     &__item {
         display: flex;
@@ -55,6 +66,22 @@ const supportersList = [
 
     &__header {
         margin-bottom: 1rem;
+    }
+
+    &__amount {
+        transition: color 0.3s ease;
+        font-weight: bold;
+    }
+
+    &__amount.highlight {
+        color: var(--primary-color);
+    }
+
+    &__address {
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 </style>
