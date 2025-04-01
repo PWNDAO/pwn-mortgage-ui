@@ -17,7 +17,7 @@
             </div>
             <div class="terms-box__single-box-container">
                 <div class="terms-box__single-box-heading">Network</div>
-                <div class="terms-box__single-box-value">Ethereum</div>
+                <div class="terms-box__single-box-value">Base</div>
             </div>
         </div>
         <div style="margin-top: 1.5rem; margin-bottom: 1rem; font-family: var(--font-family-screener); color: var(--subtitle-color);">Raised so far</div>
