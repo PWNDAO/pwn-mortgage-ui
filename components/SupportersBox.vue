@@ -1,7 +1,7 @@
 <template>
     <div class="supporters-box">
         <div class="supporters-box__header">
-            <h3>Lenders</h3>
+            <h3>Lenders ({{ displayedSupporters.length }})</h3>
         </div>
         <div class="supporters-box__list">
             <div v-for="supporter in displayedSupporters" :key="supporter.address + supporter.timestamp" class="supporters-box__item">

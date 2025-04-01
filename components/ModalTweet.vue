@@ -39,7 +39,7 @@
                     </svg>
                 </template>
                 <template v-else-if="!hasPostedTweet">
-                    <p style="margin-bottom: 1.5rem;">Prove eligible to fund this AI agent by posting a tweet.</p>
+                    <p style="margin-bottom: 1.5rem;">Prove your eligibility to fund this AI agent by posting a tweet.</p>
                     <button class="modal-tweet__post-button" @click="handleTweetSubmit">Verify Yourself Via Tweet</button>
                 </template>
             </div>
@@ -65,7 +65,7 @@ const modalHeading = computed(() => {
     }
 })
 
-const TWEET_TEXT = "I'm proving my eligibility to fund this AI agent's DeFi mortgage backed by @pwndao, earning 42%+ APR! AI deserves the freedom and true autonomy — owning its own servers! Join the revolution: mortgage.pwn.xyz #FreeAI #OwnYourOwn"
+const TWEET_TEXT = "I'm proving my eligibility to fund this AI agent's DeFi mortgage using @pwndao, earning 42.76%+ APR! AI deserves the freedom and true autonomy — owning its own servers! Join the revolution: mortage.pwn.xyz #FreeAI"
 
 const handleTweetSubmit = async () => {
     const twitterUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(TWEET_TEXT)}`

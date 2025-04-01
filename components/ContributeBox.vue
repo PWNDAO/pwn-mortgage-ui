@@ -4,7 +4,7 @@
         <div class="contribute-box__lend-button-container">
             <button class="contribute-box__button" @click="openModal">
                 <div>
-                    <div class="contribute-box__lend-text">LEND</div>
+                    <div class="contribute-box__lend-text">FUND THIS LOAN</div>
                     <div class="contribute-box__rewards">
                         <img src="/icons/rep-score.svg" alt="Reputation score" width="12" height="12">
                         <span>earn rewards</span>
@@ -29,9 +29,8 @@ import useModalTweet from '@/stores/useModalTweet'
 
 const { openModal } = useModalTweet()
 
-// Set your target deadline timestamp here
-const now = new Date()
-const deadline = now.getTime() + (11 * 58 * 59 * 1000)
+// Set deadline to 03.04.2025 1 pm CET
+const deadline = new Date('2025-04-02T12:00:00+02:00').getTime()
 const countdownText = ref('')
 let timer: ReturnType<typeof setInterval> | null = null
 
@@ -39,11 +38,26 @@ const updateCountdown = () => {
     const now = new Date().getTime()
     const distance = deadline - now
 
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24))
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
     const seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-    countdownText.value = `${hours}h ${minutes}m ${seconds}s`
+    let string = ``
+
+    // Include days in the countdown if there are any
+    if (days > 0) string += `${days}d `
+    if (hours > 0) string += `${hours}h `
+    if (minutes > 0) string += `${minutes}m `
+    if (seconds > 0) string += `${seconds}s`
+
+    // Ensure we always have a non-empty string
+    if (string === '') {
+        string = '0s'
+    }
+
+    countdownText.value = string
 
     if (distance < 0) {
         if (timer) clearInterval(timer)

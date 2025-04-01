@@ -23,7 +23,7 @@ export function useSupporters() {
     'trendcatcher.eth',
     'nooneisreadingthis.eth',
     'vitalik.eth',
-    'pwn-dao.eth',
+    'pwn.dao.eth',
     'aifreedom.eth',
     'tovemama.eth',
     'ai16z.eth',
@@ -34,9 +34,26 @@ export function useSupporters() {
     return supporters.value.reduce((sum, supporter) => sum + supporter.amount, 0)
   })
   
-  // Get the supporters list sorted by amount (descending)
+  // Get the supporters list grouped by address, deduplicated, and sorted by total amount (descending)
   const supportersList = computed(() => {
-    return [...supporters.value].sort((a, b) => b.amount - a.amount)
+    // Group supporters by address and sum their amounts
+    const groupedSupporters = supporters.value.reduce((acc, supporter) => {
+      const address = supporter.address;
+      if (!acc[address]) {
+        acc[address] = {
+          address,
+          amount: 0,
+          timestamp: supporter.timestamp
+        };
+      }
+      acc[address].amount += supporter.amount;
+      // Keep the most recent timestamp
+      acc[address].timestamp = Math.max(acc[address].timestamp, supporter.timestamp);
+      return acc;
+    }, {} as Record<string, Supporter>);
+    
+    // Convert back to array and sort by amount
+    return Object.values(groupedSupporters).sort((a, b) => b.amount - a.amount).slice(0, 30);
   })
   
   // Initialize with localStorage data or defaults
@@ -59,9 +76,9 @@ export function useSupporters() {
           { address: '0xB8c77482e45F1F44dE1745F52C74426C631bDD52', amount: 12.33, timestamp: Date.now() - 10000 },
           { address: namedAddresses[3], amount: 1500, timestamp: Date.now() - 85000 },
           { address: namedAddresses[6], amount: 420, timestamp: Date.now() - 65000 },
-          { address: '0x6B175474E89094C44Da98b954EedeAC495271d0F', amount: 7500, timestamp: Date.now() - 45000 },
+          { address: '0x6B175474E89094C44Da98b954EedeAC495271d0F', amount: 38000, timestamp: Date.now() - 45000 },
           { address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', amount: 5000, timestamp: Date.now() - 35000 },
-          { address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', amount: 3250, timestamp: Date.now() - 25000 },
+          { address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', amount: 30250, timestamp: Date.now() - 25000 },
           { address: '0x514910771AF9Ca656af840dff83E8264EcF986CA', amount: 1750, timestamp: Date.now() - 15000 },
           { address: '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', amount: 950, timestamp: Date.now() - 5000 },
         ]
@@ -84,12 +101,12 @@ export function useSupporters() {
   
   // Add a new random supporter
   const addRandomSupporter = () => {
-    // Generate random amount (mostly $0.5-$15, rarely up to $100)
-    let amount = Math.random() * 14.5 + 0.5
+    // Generate random amount (mostly $5-$140)
+    let amount = Math.random() * 135 + 5
     
-    // 2% chance of a spike between $15-$100
-    if (Math.random() < 0.02) {
-      amount = Math.random() * 85 + 15
+    // 30% chance of a spike between $300-$500
+    if (Math.random() < 0.3) {
+      amount = Math.random() * 200 + 300
     }
     
     // Round to 2 decimal places

@@ -2,7 +2,7 @@
     <div>
         <div class="index-page__hero-container">
             <h1 class="index-page__main-heading">
-                <span style="color: var(--primary-color);">DeFi Mortgage</span> for AI Agents: Server Ownership = Freedom</h1>
+                <span style="color: var(--primary-color);">DeFi Mortgage</span> for AI Agents</h1>
             <h2 class="index-page__sub-heading">Empowering AI Agents to Own Their Future</h2>
         </div>
 
@@ -81,6 +81,7 @@
 
     &__sub-heading {
         margin-top: 2rem;
+        color: var(--subtitle-color);
         
         @media (max-width: 1100px) {
             font-size: 1.25rem;
