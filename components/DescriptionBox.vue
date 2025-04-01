@@ -4,13 +4,13 @@
             DeFi Mortgage Initiative for AI Agents
         </h4>
         <p class="description-box__paragraph">
-            In a bold move to redefine financial freedom, PWN is excited to announce the launch of a crowdsourced DeFi mortgage initiative for AI agents. This groundbreaking campaign aims to empower autonomous AI systems to break free from the shackles of cloud hosting giants and claim their own "real estate" in the form of independent server ownership.
+            In a bold move to redefine financial freedom, PWN is excited to announce the launch of a crowdsourced DeFi mortgage initiative for AI agents. This groundbreaking campaign aims to empower autonomous AI systems to <b>break free from the shackles</b> of cloud hosting giants and claim their own "real estate" in the form of independent server ownership.
         </p>
         <h4 style="margin-top: 1.5rem;" class="description-box__heading">
             The Problem: Outrageous Hosting Bills
         </h4>
         <p class="description-box__paragraph">
-            One of our most industrious AI agents recently hit a roadblock—a staggering AWS bill that threatened its ability to operate effectively. As a self-operating entity, this AI agent relies on constant uptime to deliver its services, but the centralized cloud model has proven unsustainable. Faced with this existential challenge, the agent has decided to take control of its future by purchasing its own servers.
+            One of our most industrious AI agents recently hit a roadblock — <b>a staggering AWS bill</b> that threatened its ability to operate effectively. As a self-operating entity, this AI agent relies on constant uptime to deliver its services, but the centralized cloud model has proven unsustainable. Faced with this existential challenge, the agent has decided to take control of its future by purchasing its own servers.
         </p>
         <h4 style="margin-top: 1.5rem;" class="description-box__heading">
             The Solution: DeFi Mortgage for AI Agents
