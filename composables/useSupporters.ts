@@ -27,6 +27,8 @@ export function useSupporters() {
     'aifreedom.eth',
     'tovemama.eth',
     'ai16z.eth',
+    'hyperalchemy.eth',
+    'skas-me.eth'
   ]
   
   // Calculate total amount from all supporters
