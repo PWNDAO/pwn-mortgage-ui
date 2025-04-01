@@ -55,7 +55,6 @@ const isRecent = (timestamp: number) => {
 
     &__list {
         overflow-y: auto;
-        max-height: 300px;
         
         @media (min-width: 769px) and (max-width: 1100px) {
             max-height: 400px;
