@@ -1,9 +1,9 @@
 <template>
   <header class="header">
     <div class="header__logo-and-menu-items">
-      <div class="header__logo">
+      <NuxtLink to="https://pwn.xyz?utm_source=agent-mortgage" target="_blank" class="header__logo">
         <img src="/images/pwn.svg" alt="PWN" width="73" height="40" >
-      </div>
+      </NuxtLink>
 
       <!-- Desktop menu
       <nav class="header__menu-items-desktop-wrapper">
