@@ -64,8 +64,15 @@ watch(totalAmount, (newValue) => {
         text-align: center;
         position: relative;
         font-weight: bold;
-
         transition: color 0.3s ease;
+
+        @media (max-width: 768px) {
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 1.25rem;
+        }
 
         &.highlight {
             color: var(--primary-color);

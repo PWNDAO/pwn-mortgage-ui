@@ -4,21 +4,21 @@
         <div class="contribute-box__lend-button-container">
             <button class="contribute-box__button" @click="openModal">
                 <div>
-                    <div style="text-align: left; font-size: 1.5rem; color: var(--primary-color); font-family: var(--font-family-screener);">LEND</div>
-                    <div style="color: var(--primary-color); display: flex; align-items: center; column-gap: 0.25rem;">
+                    <div class="contribute-box__lend-text">LEND</div>
+                    <div class="contribute-box__rewards">
                         <img src="/icons/rep-score.svg" alt="Reputation score" width="12" height="12">
                         <span>earn rewards</span>
                     </div>
                 </div>
                 <div>
-                    <div style="display: flex; justify-content: end; margin-bottom: 0.25rem;">
+                    <div class="contribute-box__usdc-icon">
                         <img src="/icons/usdc.svg" alt="USDC" width="16" height="16" >
                     </div>
-                    <div style="color: var(--subtitle-color); font-size: 0.75rem;">+ upgrade yield from AAVE/Morpho</div>
+                    <div class="contribute-box__upgrade-text">+ upgrade yield from AAVE/Morpho</div>
                 </div>
             </button>
         </div>
-        <div style="margin-top: 1.5rem; color: var(--subtitle-color); text-align: right;">
+        <div class="contribute-box__deadline">
             <span>Deadline: {{ countdownText }}</span>
         </div>
     </div>
@@ -68,6 +68,78 @@ onUnmounted(() => {
 
     &__heading {
         margin-bottom: 1rem;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__lend-text {
+        text-align: left;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-family: var(--font-family-screener);
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            font-size: 1.3rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 1.2rem;
+        }
+    }
+    
+    &__rewards {
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        column-gap: 0.25rem;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 0.8rem;
+        }
+    }
+    
+    &__usdc-icon {
+        display: flex;
+        justify-content: end;
+        margin-bottom: 0.25rem;
+    }
+    
+    &__upgrade-text {
+        color: var(--subtitle-color);
+        font-size: 0.75rem;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            font-size: 0.7rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 0.7rem;
+        }
+    }
+    
+    &__deadline {
+        margin-top: 1.5rem;
+        color: var(--subtitle-color);
+        text-align: right;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 0.9rem;
+        }
     }
 
     &__button {
@@ -77,8 +149,16 @@ onUnmounted(() => {
         width: 100%;
         display: flex;
         justify-content: space-between;
-
         transition: all 0.3s;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            padding: 0.85rem;
+        }
+        
+        @media (max-width: 480px) {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+        }
 
         &:hover {
             cursor: pointer;

@@ -55,6 +55,15 @@ const isRecent = (timestamp: number) => {
 
     &__list {
         overflow-y: auto;
+        max-height: 300px;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            max-height: 400px;
+        }
+        
+        @media (max-width: 768px) {
+            max-height: 200px;
+        }
     }
 
     &__item {
@@ -62,6 +71,14 @@ const isRecent = (timestamp: number) => {
         justify-content: space-between;
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 480px) {
+            font-size: 0.9rem;
+        }
     }
 
     &__header {
@@ -82,6 +99,14 @@ const isRecent = (timestamp: number) => {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        
+        @media (min-width: 769px) and (max-width: 1100px) {
+            max-width: 150px;
+        }
+        
+        @media (max-width: 480px) {
+            max-width: 130px;
+        }
     }
 }
 </style>
