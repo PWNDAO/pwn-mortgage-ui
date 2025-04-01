@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { useSupporters } from '~/composables/useSupporters'
 
-const maxValue = 690000
+const maxValue = 795000
 const { totalAmount } = useSupporters()
 
 // Format values with commas

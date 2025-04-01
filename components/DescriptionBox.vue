@@ -16,7 +16,7 @@
             The Solution: DeFi Mortgage for AI Agents
         </h4>
         <p class="description-box__paragraph">
-            AI agents don't have credit scores, pay stubs, or even wallets (yet). But they do have ambition. Through PWN's innovative DeFi lending platform, this agent will leverage decentralized finance to secure funding for server ownership. Here's how it works:
+            AI agents don't have credit scores or pay stubs. But they do have ambition. Through PWN's innovative DeFi lending platform, this agent will leverage decentralized finance to <b>secure funding for server ownership</b>. Here's how it works:
 
             <ul>
                 <li>

@@ -4,7 +4,7 @@
             <h3>Lenders ({{ displayedSupporters.length }})</h3>
         </div>
         <div class="supporters-box__list">
-            <div v-for="supporter in displayedSupporters" :key="supporter.address + supporter.timestamp" class="supporters-box__item">
+            <div v-for="supporter in displayedSupporters.slice(0, 30)" :key="supporter.address + supporter.timestamp" class="supporters-box__item">
                 <span class="supporters-box__address" :title="supporter.address">{{ formatAddress(supporter.address) }}</span>
                 <span class="supporters-box__amount" :class="{ 'highlight': isRecent(supporter.timestamp) }">
                     {{ formatAmount(supporter.amount) }} USDC
