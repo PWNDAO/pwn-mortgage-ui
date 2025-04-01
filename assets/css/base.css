@@ -1,0 +1,57 @@
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+
+    color: var(--text-color);
+
+    font-family: var(--font-family-supreme);
+}
+
+/** ===========
+ *  LINKS
+ *  =========== */
+.link {
+    text-decoration: underline;
+    color: var(--text-color);
+    transition: all var(--primary-transition-time);
+    font-family: var(--font-family-supreme);
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(60%);
+    }
+
+    &--no-darkening:hover {
+        filter: none;
+    }
+
+    &--no-underline {
+        text-decoration: none;
+    }
+
+    &--primary {
+        color: var(--primary-color);
+    }
+
+    &--sm {
+        font-size: 0.85rem;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-screener);
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
