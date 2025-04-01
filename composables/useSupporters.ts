@@ -22,7 +22,7 @@ export function useSupporters() {
     'kekiusmaximus.eth',
     'trendcatcher.eth',
     'nooneisreadingthis.eth',
-    'vitalik.eth',
+    'daccmaxi.eth',
     'pwn.dao.eth',
     'aifreedom.eth',
     'tovemama.eth',
