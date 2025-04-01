@@ -57,7 +57,7 @@ const hasPostedTweet = ref(false)
 
 const modalHeading = computed(() => {
     if (!hasPostedTweet.value) {
-        return 'You are one step away from 42% APR!'
+        return 'You are one step away from 42.74% APR!'
     } else if (hasPostedTweet.value) {
         return 'Thanks for coming, visionaries!'
     } else {
